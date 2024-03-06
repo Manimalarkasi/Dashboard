@@ -1,0 +1,6 @@
+{
+    "buildOptions": {
+        "baseUrl":"src"
+    },
+    "include": ["src"]
+}

@@ -1,0 +1,34 @@
+/* *{
+    margin: 20px;
+} */
+.container-full{
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* position: fixed; */
+    width: 100%;
+    height: 100vh;
+    /* margin: 10px; */
+    float: right;
+    background-image: url('C:\Users\SightSpectrum\Desktop\additional\front\public\image/g11.jpg');
+
+}
+.reg-part1{
+    float: right;
+}
+h2{
+    text-align: center;
+    color: #047bf1d5;
+    font-weight: 900;
+}
+.paper-regi{
+    width: 500px;
+    padding: 20px;
+    height: 100vh;
+
+}
+.img{
+    height: 700px;
+}
+p{
+    float: left;
+}
