@@ -11,17 +11,20 @@ import Products from "./scenes/products/Products";
 import Customers from "./scenes/customers/Customers";
 import Transaction from "./scenes/transaction/Transaction";
 import Geography from "./scenes/geography/Geography";
-import Registerats from "./components/Register";
-import Loginats from "./components/Login";
+import Register from "./components/Register";
+import Login from "./components/Login";
 import Home from "./components/Home";
 import Overview from "./scenes/overview/Overview";
 import Daily from "./scenes/daily/Daily";
+import Monthly from "./scenes/monthly/Monthly";
+import Admins from "./scenes/admins/Admins";
+import Performance from "./scenes/performance/Performance";
 
 
 
 function App() {
 
-  
+
   const mode = useSelector((state)=>state.global.mode)
   const theme = useMemo(()=>createTheme(themeSettings(mode),[mode]));
   return (
@@ -30,9 +33,9 @@ function App() {
         <ThemeProvider theme={theme}>
           <CssBaseline />
           <Routes>
-            <Route path="/register" element={<Registerats/>} />
-            <Route path="/" element={<Loginats />} />
-            <Route path="/home" element={<Home/>} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/" element={<Login />} />
+            <Route path="/home" element={<Home />} />
 
             <Route element={<Layout />} >
             <Route path="/" element={<Navigate to='/dashboard' replace />} />
@@ -43,7 +46,9 @@ function App() {
             <Route path="/geography" element={<Geography />} />
             <Route path="/overview" element={<Overview />} />
             <Route path="/daily" element={<Daily />} />
-
+            <Route path="/Monthly" element={<Monthly />} />
+            <Route path="/admin" element={<Admins />} />
+            <Route path="/performance" element={<Performance />} />
             </Route>
           </Routes>
         </ThemeProvider>

@@ -1,15 +1,14 @@
-
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
 import './Register.css';
 import { Form, Formik ,ErrorMessage, Field} from 'formik';
-import * as Yup from 'yup'
+import * as Yup from 'yup';
 import { Avatar, Button, Grid, Paper, Stack, TextField ,Typography,Link} from '@mui/material'
 import axios from 'axios';
 import { NavLink, useNavigate } from 'react-router-dom'
 
 
 
-function Registerats() {
+function Register() {
   const navigate = useNavigate()
   const initialvalues= {
     empid:'',
@@ -18,20 +17,19 @@ function Registerats() {
     password:'',
     cpassword:'',
     phoneno:'',
-    mani:"",
   }
-  const [input,setInput] = useState({initialvalues})
+  // const [input,setInput] = useState({initialvalues})
   const onSubmit= async(values,onSubmitProps,e) =>{
     // e.preventDefault();
     console.log(values);
-          onSubmitProps.setSubmitting(false);
+          // onSubmitProps.setSubmitting(false);
           onSubmitProps.resetForm();
-          // axios.post('http://localhost:4176/register',values)
+          // axios.post('http://localhost:3177/register',values)
           // .then(res =>console.log(res))
           // .then(data =>console.log(data))
-          // .catch(err =>console.log(err))
+          // .catch(err =>console.log(err));
 
-          fetch('http://localhost:3177/register' ,{
+          fetch('http://localhost:3177/register',{
             method:"POST",
             crossDomain:true,
             headers:{
@@ -42,13 +40,14 @@ function Registerats() {
             body:JSON.stringify(values),
         }).then((res)=>res.json())
         .then((data)=>console.log(data,"Registered"))
+        .catch((err)=>console.log(err))
 
-          try{
-           const resp= await axios.post(API_URL,values);
-           console.log(resp.data);
-          }catch(error){
-            console.error('error is dedected',error);
-          }  
+          // try{
+          //  const resp= await axios.post(API_URL,values);
+          //  console.log(resp.data);
+          // }catch(error){
+          //   console.error('error is dedected',error);
+          // }  
     localStorage.setItem("user",JSON.stringify(values));
     navigate('/')
   }
@@ -135,4 +134,4 @@ function Registerats() {
   )
 }
 
-export default Registerats
+export default Register

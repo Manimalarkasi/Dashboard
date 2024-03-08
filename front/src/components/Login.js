@@ -8,7 +8,7 @@ import Face6Icon from '@mui/icons-material/Face6';
 import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined';
 
 
-function Loginats() {
+function Login() {
   const navigate = useNavigate();
     const initialvalues ={
         email:'',
@@ -113,4 +113,4 @@ function Loginats() {
     </div>
   )
 }
-export default Loginats
+export default Login;

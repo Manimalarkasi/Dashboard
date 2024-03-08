@@ -9,9 +9,7 @@ const ProductSchema = new mongoose.Schema({
     rating:Number,
     supply:Number,  
 },
-// {
-//     timestamps:true
-// }
+{timestamps:true}
 );
 
 const Product =mongoose.model("Product",ProductSchema)

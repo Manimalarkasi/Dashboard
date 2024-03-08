@@ -22,7 +22,8 @@ import Product from '../models/Product.js';
 import ProductStat from '../models/ProductStat.js';
 import Transaction from '../models/Transaction.js';
 import OverallStat from '../models/OverallStack.js';
-import {dataUser,dataProduct,dataProductStat,dataTransaction,dataOverallStat} from '../data/index.js';
+import AffiliateStat from '../models/AffiliateStat.js';
+import {dataUser,dataProduct,dataProductStat,dataTransaction,dataOverallStat,dataAffiliateStat} from '../data/index.js';
 
 
 //CONFIGURATION
@@ -47,7 +48,12 @@ app.post('/register',async(req,res)=>{
     const encryptpassword = await hashpassword(password);
     try {
       const val = await Model.create({
-          name,empid,email,password:encryptpassword,cpassword,phoneno,
+          name,
+          empid,
+          email,
+          password:encryptpassword,
+          cpassword,
+          phoneno,
       })
       res.send({status:'Values are Posted'})
       
@@ -129,8 +135,8 @@ app.use("/management" , managementRoures)
 app.use("/sales" , salesRoures)
 
 mongoose.connect('mongodb://localhost:27017/dash',{
-    // useNewUrlParser:true,
-    // useUnifiedTopology:true
+    useNewUrlParser:true,
+    useUnifiedTopology:true
 })
 .then(()=>{
     app.listen(port,()=>console.log(`Searver port : ${port} `));
@@ -140,5 +146,6 @@ mongoose.connect('mongodb://localhost:27017/dash',{
     // User.insertMany(dataUser);
     // Tracsaction.insertMany(dataTransaction);
     // OverallStat.insertMany(dataOverallStat);
+    // AffiliateStat.insertMany(dataAffiliateStat);
 })
 .catch((err)=>console.log(`${err} did not connect`));
