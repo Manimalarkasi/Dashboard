@@ -7,7 +7,7 @@ import helmet from 'helmet';
 import morgan from 'morgan';
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
-import schema from './Schema.js';
+import schema from '../models/Schema.js';
 import {comparepassword,hashpassword} from './Password.js';
 import clientRoures from '../routes/Client.js'
 import generalRoures from '../routes/general.js';
@@ -41,13 +41,15 @@ app.use(express.urlencoded({
     extended:false,
 }));
 app.use(cors());
-const  Model = mongoose.model('Add');
+const  Model = mongoose.model('Userschema');
 
 app.post('/register',async(req,res)=>{
     const {name,empid,email,password,cpassword,phoneno} = req.body;
     const encryptpassword = await hashpassword(password);
+    console.log(req.body)
     try {
-      const val = await Model.create({
+        // console.log("kkkkkk")
+      const val = await schema.create({
           name,
           empid,
           email,
@@ -55,12 +57,13 @@ app.post('/register',async(req,res)=>{
           cpassword,
           phoneno,
       })
+    //   console.log("jjjjjj")
       res.send({status:'Values are Posted'})
       
       console.log(val);
       console.log("values are posted")
     } catch (error) {
-      res.send({status:"error"})
+      res.send({status:"error",message:error})
     }
   });
 
@@ -69,7 +72,7 @@ app.post('/login',async(req,res)=>{
     try {
         const {email,password} = req.body;
         console.log(req.body);
-        const user = await Model.findOne({ email:email });
+        const user = await Model.findOne({ email}).select('+password');
        
         if (!user) {
             console.log("user is not found")
@@ -78,6 +81,7 @@ app.post('/login',async(req,res)=>{
 
         // Compare passwords
         const match = await comparepassword(password, user.password);
+
         if (match) {
             // Generate JWT token
             jwt.sign({ email: user.email, id: user._id, name: user.name }, JWT_secret, {expiresIn: "15m"}, (err, token) => {
@@ -117,7 +121,7 @@ app.post('/home',async(req,res)=>{
           return res.send({status:"error",data:"token expired"})
       }
       const useremail =user.email;
-      Model.findOne({email:useremail})
+      schema.findOne({email:useremail})
       .then((data)=>{
           res.send({status:"ok",data:data})
       })

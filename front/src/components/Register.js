@@ -20,9 +20,8 @@ function Register() {
   }
   // const [input,setInput] = useState({initialvalues})
   const onSubmit= async(values,onSubmitProps,e) =>{
-    // e.preventDefault();
+    
     console.log(values);
-          // onSubmitProps.setSubmitting(false);
           onSubmitProps.resetForm();
           // axios.post('http://localhost:3177/register',values)
           // .then(res =>console.log(res))
@@ -48,8 +47,8 @@ function Register() {
           // }catch(error){
           //   console.error('error is dedected',error);
           // }  
-    localStorage.setItem("user",JSON.stringify(values));
-    navigate('/')
+    // localStorage.setItem("user",JSON.stringify(values));
+    navigate('/');
   }
 
 

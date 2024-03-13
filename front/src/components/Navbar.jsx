@@ -1,13 +1,11 @@
 import React, { useState } from 'react'
-import { LightModeOutlined,DarkModeOutlined,Menu as MenuIcon ,Search,SettingsOutlined,ArrowDropDownOutlined} from '@mui/icons-material';
+import { LightModeOutlined,DarkModeOutlined,Menu as MenuIcon ,
+    Search,SettingsOutlined,ArrowDropDownOutlined} from '@mui/icons-material';
 import FlexBetween from './FlexBtween';
 import { useDispatch } from 'react-redux';
 import { AppBar, Box, Button, IconButton, InputBase, Menu, MenuItem, Toolbar, Typography, useTheme } from '@mui/material';
 import { setMode } from '../state';
 import { Icon } from 'semantic-ui-react';
-
-
-
 
 function Navbar({ user,isSidebarOpen,setIsSidebarOpen,}) {
     const dispatch = useDispatch();

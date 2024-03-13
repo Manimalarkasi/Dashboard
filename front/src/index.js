@@ -8,7 +8,6 @@ import { Provider } from 'react-redux';
 import { setupListeners } from '@reduxjs/toolkit/query';
 import {api} from './state/Api';
 
-
 const store = configureStore({
   reducer : {
     global:globalReducer,
@@ -17,7 +16,6 @@ const store = configureStore({
   middleware: (getDefault) => getDefault().concat(api.middleware)
 });
 setupListeners(store.dispatch);
-
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

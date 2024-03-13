@@ -6,8 +6,6 @@ import {
        HideGridColMenuItem,
     } from '@mui/x-data-grid';
 
-
-
 function CustomColumnMenu(props) {
     const { hideMenu, currentColumn, open} =props;
   return (
